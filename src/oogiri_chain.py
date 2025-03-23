@@ -8,8 +8,8 @@ from praisonaiagents import Agent, PraisonAIAgents, Task
 # 環境変数の読み込み
 load_dotenv()
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-OPENAI_API_BASE = os.getenv("OPENAI_API_BASE")
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+
 
 oogiri_questioner = Agent(
     name="大喜利出題者",
@@ -18,9 +18,8 @@ oogiri_questioner = Agent(
     backstory="大喜利の質問を得意とする大喜利出題者",
     instructions="大喜利のお題を生成してください。",
     llm={
-        "model": "openai/gpt-4o-mini",
-        "api_key": OPENAI_API_KEY,
-        "api_base": OPENAI_API_BASE,
+        "model": "openrouter/anthropic/claude-3.5-haiku-20241022",
+        "api_key": OPENROUTER_API_KEY,
     },
 )
 
@@ -31,9 +30,8 @@ oogiri_generator = Agent(
     backstory="IPPONグランプリで何度も優勝し、大喜利の回答を得意とする大喜利回答者",
     instructions="大喜利のお題に対し、おもしろい回答をしてください",
     llm={
-        "model": "openai/gpt-4o-mini",
-        "api_key": OPENAI_API_KEY,
-        "api_base": OPENAI_API_BASE,
+        "model": "openrouter/openai/gpt-4o-mini",
+        "api_key": OPENROUTER_API_KEY,
     },
 )
 
